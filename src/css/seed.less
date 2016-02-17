@@ -1,0 +1,196 @@
+@import "sfchronicle";
+@import "fonts";
+
+@block: "AntennaMedium";
+@body: "AntennaMedium";
+
+@men: #3B788C;
+@women: #8C3B4A;
+@button: #576955;
+@button2: #6E856B;
+@gap: #76467A;
+@black: #2D362C;
+
+.container {
+  max-width: 620px;
+  font-family: @body;
+  margin: 10px;
+}
+
+.hed {
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.chatter {
+  font-size: 15px;
+  padding-bottom: 15px;
+  font-family: @body;
+}
+
+.edu-chart {
+  display: none;
+  &.active {
+    display: flex;
+    flex-direction: row;
+    @media @mobile {
+      display: block;
+    }
+  }
+}
+.prof-chart {
+  display: none;
+  &.active {
+    display: flex;
+    flex-direction: row;
+    @media @mobile {
+      display: block;
+    }
+  }
+}
+
+.button-container, .sort-buttons {
+  text-align: center;
+  .button {
+    display: inline-block;
+    width: 140px;
+    text-align: center;
+    color: white;
+    margin: 2px 0;
+    cursor: pointer;
+    border-radius: 6px;
+    &.active {
+      border: 2px solid @black;
+    }
+  }
+}
+.button-container {
+  .button {
+    background: @button;
+  }
+}
+.sort-buttons {
+  font-size: 15px;
+  .button {
+    background: @button2;
+  }
+  margin-bottom: 15px;
+}
+
+.legend {
+  font-size: 14px;
+  //text-align: center;
+  border: 1px solid @black;
+  border-radius: 6px;
+  width: 250px;
+  margin: auto;
+  margin-bottom: 25px;
+  padding: 5px;
+  .men-swath, .women-swath, .gap-swath {
+    height: 14px;
+    width: 14px;
+    //margin: 4px auto;
+    margin-left: 10px;
+    margin-bottom: 5px;
+  }
+  .men-swath {
+    margin-top: 5px;
+    background: @men;
+  }
+  .women-swath {
+    background: @women;
+  }
+  .gap-swath {
+    background: @gap;
+  }
+  .text {
+    width: 250px;
+    padding-left: 20px;
+    vertical-align: text-top;
+  }
+}
+
+.bar-title {
+  float: left;
+  font-size:15px;
+  font-weight: bold;
+  width: 33%;
+  @media @mobile {
+    width: 100%;
+    font-weight: normal;
+  }
+}
+
+.bar-container {
+  clear: left;
+  text-align: left;
+  padding-top: 2px;
+  margin-left: 10px;
+  width: 67%;
+  @media @mobile {
+    width: 100%;
+  }
+
+  .men-bar, .women-bar, .gap-bar {
+    height: 17px;
+    display: block;
+    right: 20px;
+    margin: 2px 0;
+    max-width: 80%;
+    @media @mobile {
+      max-width: 75%;
+      height: 13px;
+    }
+  }
+  .men-text, .women-text, .gap-text {
+    font-size: 13px;
+    float: right;
+    margin-right: -60px;
+  }
+  .men-bar {
+    background: @men;
+  }
+  .women-bar {
+    background: @women;
+  }
+  .gap-bar {
+    background: @gap;
+  }
+
+}
+
+.note{
+  padding-top: 10px;
+  font-size: 12px;
+}
+
+.source, .credit, .note {
+  font-size: 11.5px;
+  color: @df-middle-gray;
+}
+
+.source{
+  font-style: italic;
+}
+.credit{
+  text-transform: uppercase;
+  padding-bottom: 20px;
+}
+
+&.up::after, &.down::after {
+  // position: absolute;
+  color: @df-dark-gray;  // color: rgb(188, 92, 35);
+  font-size: 0.7em;
+  // text-align: right;
+  margin-left: 4px;
+}
+&.up::after {
+  content: "\25B2";
+  padding-top: 0.2em;
+}
+&.down::after {
+  content: "\25BC";
+  padding-top: 0.2em;
+}

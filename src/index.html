@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= json.project.title %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <%= t.include("partials/_head.html") %>
+  </head>
+  <body ng-app="paygap">
+
+    <responsive-child>
+
+      <div class="container" ng-controller="PayGapController">
+
+        <div class="hed">San Francisco women receive unequal pay</div>
+        <div class="chatter">No matter how you parse the data, accounting for education, profession, and age, the most recent Census shows that women are consistently paid less for the same work, particularly when they are well-educated or work in high paying jobs.</div>
+
+        <div class="button-container">
+          <div class="button edu"
+          ng-click="selectedTable = 'edu'; sortTable('Order')"
+          ng-class="{'active':selectedTable == 'edu'}">Education</div>
+          <div class="button profession"
+          ng-click="selectedTable = 'prof'; sortTable('Gap')"
+          ng-class="{'active':selectedTable == 'prof'}">Profession</div>
+          <div class="button age"
+          ng-click="selectedTable = 'age'; sortTable('Order')"
+          ng-class="{'active':selectedTable == 'age'}">Age</div>
+        </div>
+
+        <div class="sort-buttons">Order by:
+          <div class="button"
+            ng-click="selectSort='Order'; sortTable('Order')"
+            ng-class="{active:selectSort == 'Order',
+                      up: lastSort == 'Order' && sortOrder == -1,
+                      down: lastSort == 'Order' && sortOrder == 1 }"
+            ng-show="selectedTable == 'edu'">Education level</div>
+          <div class="button"
+            ng-click="selectSort='WomenK'; sortTable('WomenK')"
+            ng-class="{active:selectSort == 'WomenK',
+                      up: lastSort == 'WomenK' && sortOrder == -1,
+                      down: lastSort == 'WomenK' && sortOrder == 1 }"
+            >Women's pay</div>
+          <div class="button"
+            ng-click="selectSort='MenK'; sortTable('MenK')"
+            ng-class="{active:selectSort == 'MenK',
+                      up: lastSort == 'MenK' && sortOrder == -1,
+                      down: lastSort == 'MenK' && sortOrder == 1 }"
+            >Men's pay</div>
+          <div class="button"
+            ng-click="selectSort='Gap'; sortTable('Gap')"
+            ng-class="{active:selectSort == 'Gap',
+                      up: lastSort == 'Gap' && sortOrder == -1,
+                      down: lastSort == 'Gap' && sortOrder == 1 }"
+            >Pay gap</div>
+        </div>
+
+        <div class="legend">
+          <div class="men-swath"><div class="text">Men's average salary</div></div>
+          <div class="women-swath"><div class="text">Women's average salary</div></div>
+          <div class="gap-swath"><div class="text">Average salary gap</div></div>
+        </div>
+
+        <div class="edu-chart" ng-repeat="edu_level in genderDataEdu" ng-class="{'active':selectedTable == 'edu'}">
+          <div class="bar-title">{{edu_level.Education}}</div>
+          <div class="bar-container">
+            <div class="men-bar" ng-style="{ width: {{edu_level.MenPercent}} + '%' }"><div class="men-text">${{edu_level.MenK}} K</div></div>
+            <div class="women-bar" ng-style="{ width: {{edu_level.WomenPercent}} + '%' }"><div class="women-text">${{edu_level.WomenK}} K</div></div>
+            <div class="gap-bar" ng-style="{ width: {{edu_level.GapPercent}} + '%' }"><div class="gap-text">${{edu_level.GapK}} K</div></div>
+          </div>
+        </div>
+
+        <div class="prof-chart" ng-repeat="prof in genderDataProf" ng-class="{'active':selectedTable == 'prof'}">
+
+          <div class="bar-title">{{prof.Subject}}</div>
+          <div class="bar-container">
+            <div class="men-bar" ng-style="{ width: {{prof.MenPercent}} + '%' }"><div class="men-text">${{prof.MenK}} K</div></div>
+            <div class="women-bar" ng-style="{ width: {{prof.WomenPercent}} + '%' }"><div class="women-text">${{prof.WomenK}} K</div></div>
+            <div class="gap-bar" ng-style="{ width: {{prof.GapPercent}} + '%' }"><div class="women-text">${{prof.GapK}} K</div></div>
+          </div>
+        </div>
+
+
+        <div class="note"><em>Note: This is Census date etc etc etc.</em></div>
+        <div class="source">Source: <a href="https://www.irs.gov/uac/SOI-Tax-Stats-Migration-Data" target="_blank">Census data</a></div>
+        <div class="credit">Emma O'Neill / San Francisco Chronicle</div>
+
+
+      </div>
+
+      </div>
+
+    </responsive-child>
+
+    <script>
+      var genderDataEdu = <%= JSON.stringify(json.GenderDataEmma_ByEducation) %>
+      console.log(genderDataEdu);
+      var genderDataProf = <%= JSON.stringify(json.GenderDataEmma_ByProfession) %>
+      console.log(genderDataProf);
+    </script>
+
+    <script src="app.js" async></script>
+    <%= t.include("partials/_foot.html") %>
+    <%= t.include("partials/_helloSFC.html") %>
+  </body>
+</html>
