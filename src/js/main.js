@@ -6,6 +6,36 @@ require("angular/angular.min");
 
 var app = angular.module("paygap",[]);
 
+genderDataProf.forEach(function(row){
+  var percentGap = Math.floor(row.GapPercent*100);
+  if (percentGap < 0){
+    row.gapNEG = 1;
+  } else {
+    row.gapNEG = 0;
+  }
+  row.GapPercent = Math.abs(row.GapPercent);
+  console.log(row.GapPercent);
+  if (row.GapPercent < 0.7) {
+    row.GapPercent = 0.7;
+    console.log("found one");
+  }
+});
+
+genderDataEdu.forEach(function(row){
+  var percentGap = Math.floor(row.GapPercent*100);
+  if (percentGap < 0){
+    row.gapNEG = 1;
+  } else {
+    row.gapNEG = 0;
+  }
+  row.GapPercent = Math.abs(row.GapPercent);
+  console.log(row.GapPercent);
+  if (row.GapPercent < 0.7) {
+    row.GapPercent = 0.7;
+    console.log("found one");
+  }
+});
+
 app.controller("PayGapController",["$scope", "$filter", function($scope) {
 
   $scope.genderDataEdu = genderDataEdu;

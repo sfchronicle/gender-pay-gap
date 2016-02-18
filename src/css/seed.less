@@ -9,12 +9,12 @@
 @button: #576955;
 @button2: #6E856B;
 @gap: #76467A;
-@black: #2D362C;
+@black: darken(#2D362C,10%);
 
 .container {
   max-width: 620px;
   font-family: @body;
-  margin: 10px;
+  padding: 10px;
 }
 
 .hed {
@@ -87,6 +87,9 @@
   width: 250px;
   margin: auto;
   margin-bottom: 25px;
+  @media @mobile {
+    margin-bottom: 20px;
+  }
   padding: 5px;
   .men-swath, .women-swath, .gap-swath {
     height: 14px;
@@ -142,6 +145,14 @@
     @media @mobile {
       max-width: 75%;
       height: 13px;
+    }
+    &.leftClass {
+      margin-right: 100%;
+      float: right;
+    }
+    &.rightClass {
+      margin-left: 0;
+      float:left;
     }
   }
   .men-text, .women-text, .gap-text {

@@ -14,7 +14,7 @@
       <div class="container" ng-controller="PayGapController">
 
         <div class="hed">San Francisco women receive unequal pay</div>
-        <div class="chatter">No matter how you parse the data, accounting for education, profession, and age, the most recent Census shows that women are consistently paid less for the same work, particularly when they are well-educated or work in high paying jobs.</div>
+        <div class="chatter">No matter how you parse the data, accounting for education and profession, the most recent Census shows that women are consistently paid less for the same work, particularly when they are well-educated or work in high paying jobs.</div>
 
         <div class="button-container">
           <div class="button edu"
@@ -23,9 +23,6 @@
           <div class="button profession"
           ng-click="selectedTable = 'prof'; sortTable('Gap')"
           ng-class="{'active':selectedTable == 'prof'}">Profession</div>
-          <div class="button age"
-          ng-click="selectedTable = 'age'; sortTable('Order')"
-          ng-class="{'active':selectedTable == 'age'}">Age</div>
         </div>
 
         <div class="sort-buttons">Order by:
@@ -64,9 +61,11 @@
         <div class="edu-chart" ng-repeat="edu_level in genderDataEdu" ng-class="{'active':selectedTable == 'edu'}">
           <div class="bar-title">{{edu_level.Education}}</div>
           <div class="bar-container">
-            <div class="men-bar" ng-style="{ width: {{edu_level.MenPercent}} + '%' }"><div class="men-text">${{edu_level.MenK}} K</div></div>
+            <div class="men-bar"
+              ng-style="{ width: {{edu_level.MenPercent}} + '%' }"><div class="men-text">${{edu_level.MenK}} K</div></div>
             <div class="women-bar" ng-style="{ width: {{edu_level.WomenPercent}} + '%' }"><div class="women-text">${{edu_level.WomenK}} K</div></div>
-            <div class="gap-bar" ng-style="{ width: {{edu_level.GapPercent}} + '%' }"><div class="gap-text">${{edu_level.GapK}} K</div></div>
+            <div class="gap-bar" ng-style="{ width: {{edu_level.GapPercent}} + '%' }"
+            ng-class="{leftClass: edu_level.gapNEG == 1, rightClass: edu_level.gapNEG == 0}"><div class="gap-text">${{edu_level.GapK}} K</div></div>
           </div>
         </div>
 
@@ -76,13 +75,14 @@
           <div class="bar-container">
             <div class="men-bar" ng-style="{ width: {{prof.MenPercent}} + '%' }"><div class="men-text">${{prof.MenK}} K</div></div>
             <div class="women-bar" ng-style="{ width: {{prof.WomenPercent}} + '%' }"><div class="women-text">${{prof.WomenK}} K</div></div>
-            <div class="gap-bar" ng-style="{ width: {{prof.GapPercent}} + '%' }"><div class="women-text">${{prof.GapK}} K</div></div>
+            <div class="gap-bar" ng-style="{ width: {{prof.GapPercent}} + '%' }"
+            ng-class="{leftClass: prof.gapNEG == 1, rightClass: prof.gapNEG == 0}"><div class="gap-text">${{prof.GapK}} K</div></div>
           </div>
         </div>
 
 
-        <div class="note"><em>Note: This is Census date etc etc etc.</em></div>
-        <div class="source">Source: <a href="https://www.irs.gov/uac/SOI-Tax-Stats-Migration-Data" target="_blank">Census data</a></div>
+        <div class="note"><em>About the data: 5-year American Community Survey data shows the median earnings for full-time, year-round civilian employees in San Francisco between 2010 and 2014. The margin of error could shrink or grow the pay-gap, but fully-employed men make more than women in most industries.</em></div>
+        <div class="source">Source: <a href="http://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_14_5YR_S2402&prodType=table" target="_blank">Census data</a></div>
         <div class="credit">Emma O'Neill / San Francisco Chronicle</div>
 
 
