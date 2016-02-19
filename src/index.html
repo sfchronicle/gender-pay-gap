@@ -86,11 +86,9 @@
           </div>
         </div>
 
-
         <div class="note"><em>About the data: 5-year American Community Survey data shows the median earnings for full-time, year-round civilian employees in San Francisco between 2010 and 2014. The margin of error could shrink or grow the pay-gap, but fully-employed men make more than women in most industries.</em></div>
         <div class="source">Source: <a href="http://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_14_5YR_S2402&prodType=table" target="_blank">Census data</a></div>
         <div class="credit">Emma O'Neill / San Francisco Chronicle</div>
-
 
       </div>
 
@@ -99,14 +97,8 @@
     </responsive-child>
 
     <script>
-      var pymChild = new pym.Child();
-    </script>
-
-    <script>
       var genderDataEdu = <%= JSON.stringify(json.GenderDataEmma_ByEducation) %>
-      console.log(genderDataEdu);
       var genderDataProf = <%= JSON.stringify(json.GenderDataEmma_ByProfession) %>
-      console.log(genderDataProf);
     </script>
 
     <script src="app.js" async></script>

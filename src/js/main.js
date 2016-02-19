@@ -80,7 +80,6 @@ app.controller("PayGapController",["$scope", "$filter", function($scope) {
       }
     });
 
-
   };
 
 }]);
