@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css">
     <%= t.include("partials/_head.html") %>
+    <script type="text/javascript" src="http://projects.sfchronicle.com/shared/js/pym.min.js">
+    </script>
   </head>
   <body ng-app="paygap">
 
@@ -58,25 +60,29 @@
           <div class="gap-swath"><div class="text">Average salary gap</div></div>
         </div>
 
-        <div class="edu-chart" ng-repeat="edu_level in genderDataEdu" ng-class="{'active':selectedTable == 'edu'}">
-          <div class="bar-title">{{edu_level.Education}}</div>
-          <div class="bar-container">
-            <div class="men-bar"
-              ng-style="{ width: {{edu_level.MenPercent}} + '%' }"><div class="men-text">${{edu_level.MenK}} K</div></div>
-            <div class="women-bar" ng-style="{ width: {{edu_level.WomenPercent}} + '%' }"><div class="women-text">${{edu_level.WomenK}} K</div></div>
-            <div class="gap-bar" ng-style="{ width: {{edu_level.GapPercent}} + '%' }"
-            ng-class="{leftClass: edu_level.gapNEG == 1, rightClass: edu_level.gapNEG == 0}"><div class="gap-text">${{edu_level.GapK}} K</div></div>
+        <div class="edu-chart-container">
+          <div class="edu-chart" ng-repeat="edu_level in genderDataEdu" ng-class="{'active':selectedTable == 'edu'}">
+            <div class="bar-title">{{edu_level.Education}}</div>
+            <div class="bar-container">
+              <div class="men-bar"
+                ng-style="{ width: {{edu_level.MenPercent}} + '%' }"><div class="men-text">${{edu_level.MenK}} K</div></div>
+              <div class="women-bar" ng-style="{ width: {{edu_level.WomenPercent}} + '%' }"><div class="women-text">${{edu_level.WomenK}} K</div></div>
+              <div class="gap-bar" ng-style="{ width: {{edu_level.GapPercent}} + '%' }"
+              ng-class="{leftClass: edu_level.gapNEG == 1, rightClass: edu_level.gapNEG == 0}"><div class="gap-text">${{edu_level.GapK}} K</div></div>
+            </div>
           </div>
         </div>
 
-        <div class="prof-chart" ng-repeat="prof in genderDataProf" ng-class="{'active':selectedTable == 'prof'}">
+        <div class="prof-chart-container">
+          <div class="prof-chart" ng-repeat="prof in genderDataProf" ng-class="{'active':selectedTable == 'prof'}">
 
-          <div class="bar-title">{{prof.Subject}}</div>
-          <div class="bar-container">
-            <div class="men-bar" ng-style="{ width: {{prof.MenPercent}} + '%' }"><div class="men-text">${{prof.MenK}} K</div></div>
-            <div class="women-bar" ng-style="{ width: {{prof.WomenPercent}} + '%' }"><div class="women-text">${{prof.WomenK}} K</div></div>
-            <div class="gap-bar" ng-style="{ width: {{prof.GapPercent}} + '%' }"
-            ng-class="{leftClass: prof.gapNEG == 1, rightClass: prof.gapNEG == 0}"><div class="gap-text">${{prof.GapK}} K</div></div>
+            <div class="bar-title">{{prof.Subject}}</div>
+            <div class="bar-container">
+              <div class="men-bar" ng-style="{ width: {{prof.MenPercent}} + '%' }"><div class="men-text">${{prof.MenK}} K</div></div>
+              <div class="women-bar" ng-style="{ width: {{prof.WomenPercent}} + '%' }"><div class="women-text">${{prof.WomenK}} K</div></div>
+              <div class="gap-bar" ng-style="{ width: {{prof.GapPercent}} + '%' }"
+              ng-class="{leftClass: prof.gapNEG == 1, rightClass: prof.gapNEG == 0}"><div class="gap-text">${{prof.GapK}} K</div></div>
+            </div>
           </div>
         </div>
 
@@ -91,6 +97,10 @@
       </div>
 
     </responsive-child>
+
+    <script>
+      var pymChild = new pym.Child();
+    </script>
 
     <script>
       var genderDataEdu = <%= JSON.stringify(json.GenderDataEmma_ByEducation) %>

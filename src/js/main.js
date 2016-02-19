@@ -14,10 +14,8 @@ genderDataProf.forEach(function(row){
     row.gapNEG = 0;
   }
   row.GapPercent = Math.abs(row.GapPercent);
-  console.log(row.GapPercent);
   if (row.GapPercent < 0.7) {
     row.GapPercent = 0.7;
-    console.log("found one");
   }
 });
 
@@ -29,10 +27,8 @@ genderDataEdu.forEach(function(row){
     row.gapNEG = 0;
   }
   row.GapPercent = Math.abs(row.GapPercent);
-  console.log(row.GapPercent);
   if (row.GapPercent < 0.7) {
     row.GapPercent = 0.7;
-    console.log("found one");
   }
 });
 

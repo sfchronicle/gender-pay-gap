@@ -4,11 +4,11 @@
 @block: "AntennaMedium";
 @body: "AntennaMedium";
 
-@men: #3B788C;
-@women: #8C3B4A;
-@button: #576955;
-@button2: #6E856B;
-@gap: #76467A;
+@men: lighten(#373745,30%);//lighten(#3B788C,20%);
+@women: lighten(#45373E,30%);//lighten(#8C3B4A,20%);
+@button: lighten(#454537,20%);//#576955;
+@button2: lighten(#454537,40%);//#6E856B;
+@gap: lighten(#37453E,15%);//lighten(#76467A,20%);
 @black: darken(#2D362C,10%);
 
 .container {
@@ -34,6 +34,8 @@
   display: none;
   &.active {
     display: flex;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     flex-direction: row;
     @media @mobile {
       display: block;
@@ -44,6 +46,8 @@
   display: none;
   &.active {
     display: flex;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     flex-direction: row;
     @media @mobile {
       display: block;
@@ -75,6 +79,7 @@
   font-size: 15px;
   .button {
     background: @button2;
+    color: @black;
   }
   margin-bottom: 15px;
 }
@@ -86,9 +91,9 @@
   border-radius: 6px;
   width: 250px;
   margin: auto;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   @media @mobile {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
   padding: 5px;
   .men-swath, .women-swath, .gap-swath {
@@ -119,10 +124,17 @@
   float: left;
   font-size:15px;
   font-weight: bold;
-  width: 33%;
+  width: 40%;
   @media @mobile {
     width: 100%;
     font-weight: normal;
+  }
+}
+
+.edu-chart-container, .prof-chart-container {
+  max-width: 85%;
+  @media @mobile {
+    max-width: 100%;
   }
 }
 
@@ -131,9 +143,9 @@
   text-align: left;
   padding-top: 2px;
   margin-left: 10px;
-  width: 67%;
+  width: 60%;
   @media @mobile {
-    width: 100%;
+    width: 70%;
   }
 
   .men-bar, .women-bar, .gap-bar {
@@ -141,9 +153,8 @@
     display: block;
     right: 20px;
     margin: 2px 0;
-    max-width: 80%;
+
     @media @mobile {
-      max-width: 75%;
       height: 13px;
     }
     &.leftClass {
@@ -175,6 +186,10 @@
 .note{
   padding-top: 10px;
   font-size: 12px;
+  display: block;
+  @media @mobile {
+    margin-top: 15px;
+  }
 }
 
 .source, .credit, .note {
